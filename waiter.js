@@ -19,7 +19,7 @@ const placeOrder = (order) => {
 };
 
 serveQueue.process((job, done) => {
-    console.log(`${job.data.qty}x ${job.data.dish} ready to be served 😋`);
+    console.log(`🧾 ${job.data.qty}x ${job.data.dish} ready to be served 😋`);
     // Notify the client via push notification, web socket or email etc.
     done();
 })

@@ -38,10 +38,10 @@ app.post('/order-legacy', (req, res) => {
         orderNo: Date.now().toString(36)
     }
     if (order.dish && order.qty) {
-        setTimeout(() => console.log("👨‍🍳 Getting the ingredients ready"), 1000);
-        setTimeout(() => console.log(`👨‍🍳 Preparing ${order.dish}`), 1500);
+        setTimeout(() => console.log("Getting the ingredients ready... 🥬 🧄 🧅 🍄"), 1000);
+        setTimeout(() => console.log(`🍳 Preparing ${order.dish}`), 1500);
         setTimeout(() => {
-            console.log(`👨‍🍳 Order ${order.orderNo}: ${order.dish} ready`);
+            console.log(`🧾 Order ${order.orderNo}: ${order.dish} ready`);
             res.json({ done: true, message: `Your ${order.qty}x ${order.dish} is ready` })
         }, order.qty * 5000);
     } else {
