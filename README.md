@@ -17,8 +17,8 @@ Check restaurant status
 > Request body
 ```json
 {
-	"dish": "Chicken Al-faham",
-	"qty": 2
+  "dish": "Chicken Al-faham",
+  "qty": 2
 }
 ```
 
@@ -26,7 +26,43 @@ Check restaurant status
 ```json
 {
   "done": true,
+  "order": "22",
   "message": "Your order will be ready in a while"
+}
+```
+
++ GET `/status` with query strings
+
+> Request query
+```js
+{
+  orderId: 22
+}
+```
+> Example
+
+`http://localhost:5000/status?orderId=22`
+
+> Response body
+When the job is running:
+```json
+{
+  "progress": "Your order is ⏲ 32.5% ready",
+  "order": {
+    "dish": "Pork ribs",
+    "qty": 8
+  },
+  "status": "created"
+}
+```
+When the job is finished:
+```json
+{
+  "progress": "Your order is ready 😊",
+  "order": {
+    "dish": "Pork ribs",
+    "qty": 8
+  }
 }
 ```
 
@@ -35,8 +71,8 @@ Check restaurant status
 > Request body
 ```json
 {
-	"dish": "Tacos",
-	"qty": 4
+  "dish": "Tacos",
+  "qty": 4
 }
 ```
 
