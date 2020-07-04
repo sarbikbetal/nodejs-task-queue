@@ -31,17 +31,11 @@ Check restaurant status
 }
 ```
 
-+ GET `/status` with query strings
++ GET `/order/:id` where `:id` is the orderId
 
-> Request query
-```js
-{
-  orderId: 22
-}
-```
 > Example
 
-`http://localhost:5000/status?orderId=22`
+`http://localhost:5000/order/22`
 
 > Response body
 When the job is running:

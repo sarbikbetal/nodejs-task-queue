@@ -68,8 +68,8 @@ app.post('/order-legacy', (req, res) => {
     }
 });
 
-app.get("/status", (req, res) => {
-    let orderId = req.query.orderId;
+app.get("/order/:id", (req, res) => {
+    let orderId = req.params.id;
     if (orderId) {
         getStatus(orderId).then((result) => {
             if (result.status == "succeeded"){
