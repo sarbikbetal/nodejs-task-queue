@@ -70,25 +70,20 @@ app.post('/order-legacy', (req, res) => {
 
 app.get("/order/:id", (req, res) => {
     let orderId = req.params.id;
-    if (orderId) {
-        getStatus(orderId).then((result) => {
-            if (result.status == "succeeded"){
-                res.json({
-                    progress: `Your order is ready 😊`,
-                    order: result.order                    
-                })
-            }else{
-                res.json({
-                    progress: `Your order is ⏲ ${result.progress}% ready`,
-                    order: result.order,
-                    status: result.status          
-                })
-            }
-        }).catch((err) => {
-            res.json(err);
+    if (!orderId) {
+        res.sendStatus(400);
+        return;
+    };
+    
+    getStatus(orderId).then((result) => {
+        res.json({
+            progress: result.status == "succeeded" ? `Your order is ready 😊` : `Your order is ⏲ ${result.progress}% ready`,
+            order: result.order,
+            status: result.status
         })
-    } else
-        res.sendStatus(400)
+    }).catch((err) => {
+        res.sendStatus(500);
+    });
 })
 
 
